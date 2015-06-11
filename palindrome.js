@@ -1,6 +1,5 @@
-function Palindrome(str) { 
-  var rev = str.replace(/ /g, '').split('').reverse().join('');
-  str = str.replace(/ /g, '');
-  if (rev == str){return true;}
-  else {return false;}
-};
+function Palindrome(str) {
+  var newString = str.replace(/\s/g, ''),
+      reverseString = newString.split('').reverse().join('');
+  return newString === reverseString;
+}
