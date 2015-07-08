@@ -8,7 +8,7 @@ function LetterCountI(str) {
       greatest = [],
       greatestIndex;
   
-  for (var i=0; i<strb.length; i++) {
+  for (var i=0; i<strb.length; i++) { 
     strb[i].split('').forEach(function(x){
       if (str2[i] == undefined) str2[i] = new Object();
       if (str2[i][x] == undefined) str2[i][x] = null;
