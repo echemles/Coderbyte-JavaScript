@@ -1,11 +1,9 @@
 function AdditivePersistence(num) {
-  var counter = 0;
-  function add(x,y){return Number(x) + Number(y)};
-  num = num.toString();
-  while (num.length > 1){
-    counter += 1;
-  	num = String(num).split('').reduce(add)
-    num = num.toString();
+  var count = 0, 
+  	  add = function(x,y){return Number(x) + Number(y)};
+  while (num >= 10) {
+    count += 1;
+    num = num.toString().split('').reduce(add);
   }
-  return counter;
+  return count;
 }
