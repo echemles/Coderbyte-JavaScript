@@ -1,16 +1,10 @@
 function PrimeMover(num) {
-  for(var list = [], x=2, i, j, isPrime; list.length<num; x++){
+  for (var i=2, j, isPrime, primes = []; primes.length<num; i++){
     isPrime = true;
-    for (i=2; i<9999; i++){
-      for (j=2;(i*j)<=x; j++){
-        if (i*j === x){
-          isPrime = false;
-          break;
-        }
-      }
-      if (i*j === x) break;
+    for(j=2; j<i; j++){
+      if(i%j === 0) isPrime = false;
     }
-    if (isPrime === true) list.push(x);
-  };
-  return list.pop();
+    if (isPrime === true) primes.push(i);
+  }
+  return primes.pop();
 }

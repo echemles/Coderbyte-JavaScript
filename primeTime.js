@@ -1,7 +1,6 @@
 function PrimeTime(num) {   
-  for(var i=2, j=2; i<num; i++){
-    for( ; j<num; j++){
-      if (j*i === num) return false;
+  for(var i=2; i<num; i++){
+    if (num % i === 0) return false;
     }
   }
   return true;
