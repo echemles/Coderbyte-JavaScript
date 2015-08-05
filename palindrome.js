@@ -1,5 +1,4 @@
 function Palindrome(str) {
-  var newString = str.replace(/\s/g, ''),
-      reverseString = newString.split('').reverse().join('');
-  return newString === reverseString;
+  str = str.replace(/[^A-Za-z]/g,'').toLowerCase();
+  return str.split('').reverse().join('') === str;
 }

@@ -1,14 +1,15 @@
 function RunLength(str) {
-    var answer = [], counter, i, j;
-    for (i=0; i<str.length; i += j){
-        counter = 1;
-        for ( j=1; j<str.length; j++){
-            if (str[i+j] === str[i]) counter += 1;
-            else if (str[i+j] !== str[i]){
-                ans.push(counter+str[i]);
-                break;
-            }
-        }
+  if (str.length===1)  return 1+str;
+  var counter = 1, current = str[0],
+      answer = [];
+  for (var i=1; i<str.length; i++){
+    if (current === str[i]) counter +=1;
+    else {
+      answer.push(counter,current)
+      counter = 1; 
+      current = str[i];
     }
-    return answer.join('');
+    if(i === str.length - 1) answer.push(counter,current);
+  }
+  return answer.join('');
 }

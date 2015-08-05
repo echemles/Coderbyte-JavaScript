@@ -1,4 +1,5 @@
 function NumberAddition(str) {
-  str = str.replace(/[^0-9]+/g, ' ').split(' ');
-  return str.reduce(function(x,y){return Number(x) + Number(y)});
+  var nums = str.match(/[0-9]+/g);
+  if (nums === null) return 0;
+  return nums.reduce(function(sum, num) {return Number(sum) + Number(num)});
 }

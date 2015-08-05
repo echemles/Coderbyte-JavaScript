@@ -1,6 +1,3 @@
 function VowelCount(str) {
-  if (str.match(/[aeiou]/g) !== null)
-    return str.match(/[aeiou]/g).length;
-  else
-    return 0;
+  return str.match(/[aeiou]/gi) !== null ? str.match(/[aeiou]/gi).length:0;
 }

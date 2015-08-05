@@ -1,6 +1,9 @@
 function PowersofTwo(num) {
-  for (var i=1, twoPow=[]; i<99; i++){
-    twoPow.push(Math.pow(2,i));
+  var powsofTwo = [], i=1, x=0;
+  while(x<num){
+    x = Math.pow(2,i)
+    powsofTwo.push(x);
+    i++;
   }
-  return twoPow.indexOf(num) === -1 ? false : true;    
+  return powsofTwo.indexOf(num) === -1 ? false:true;
 }
