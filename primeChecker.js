@@ -1,43 +1,28 @@
 function PrimeChecker(num) {
-  function shuffle(num) {
-    var array = num.toString().split(''),
-        currentIndex = array.length, temporaryValue, randomIndex ;
+  num = num.toString().split('');
+  var uniqueNums = [], combos = [], random;
+  function shuffle(n) {
+        var currentIndex = n.length, temporaryValue, randomIndex ;
     while (0 !== currentIndex) {
         randomIndex = Math.round(Math.random() * currentIndex);
         currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        temporaryValue = n[currentIndex];
+        n[currentIndex] = n[randomIndex];
+        n[randomIndex] = temporaryValue;
     }
-    return array.join('');
+    return n.join('');
   }
-  
-  function factorial(num) {
-    for(var i=1, product = 1; i<=num; i++) {
-      product *= i;
-    }
-    return product
-  }
-  
-  var uniqueNumbers = [], anyPrime = 0;
-  
-  num.toString().split('').forEach(function(x){
-    if(uniqueNumbers.indexOf(x) === -1) uniqueNumbers.push(x);
+  num.forEach(function(n){
+    if(uniqueNums.indexOf(n) === -1) uniqueNums.push(n)
   })
-  
-  var possibleCombinations = (factorial(uniqueNumbers.length)/(factorial(num.length)*factorial( uniqueNumbers.length - num.length)))
-    
-  for(var combinations = [], newNum; combinations.length<possibleCombinations;) {
-    newNum = shuffle(num)  
-    if(combinations.indexOf(Number(newNum)) === -1) combinations.push(Number(newNum))
+  var possibleCombos = uniqueNums.length === 1? 1: num.length*(uniqueNums.length - 1);
+  while(combos.length < possibleCombos){
+    random = shuffle(num)
+    if (combos.indexOf(random) === -1) combos.push(random);
   }
-  
-  
-  combinations.forEach(function(x){
-    for(var i = 2, isPrime = true; i < x; i++) {
-        if(x % i === 0) isPrime = false;
-    }
-    if (isPrime === true && x > 2) anyPrime = 1;
-  })
-  return anyPrime;
+  function isPrime(n){
+    for(var i=2; i<n; i++) if(n%i===0) return false;
+    if (n>1) return true;
+  }
+  return combos.some(isPrime) === true? 1:0;
 }

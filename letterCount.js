@@ -1,24 +1,23 @@
-function LetterCountI(str) {
-  str = str.split(' ');
-  var counts = [];
-  str.forEach(function(x){
-    var y = new Object(),
-        letterCount = [];
-    x.split('').forEach(function(z){
-      if (y[z] === undefined) y[z] = 0;
-      y[z] += 1;
+function LetterCount(str) {
+  var words, repsObj, repsArr, repsArr2 = [], maxArr = [], maxIndex, i;
+  words = str.toLowerCase().replace(/[^A-Za-z\s]/g,'').split(' ');
+  words.forEach(function(word){
+    repsObj = {};
+    repsArr = [];
+    word.split('').forEach(function(letter){
+      if (repsObj[letter] === undefined) repsObj[letter] = 0;
+      repsObj[letter] += 1;
     });
-    for (var key in y) {
-      if (y[key] !== 1) letterCount.push(y[key])
-    };
-    counts.push(letterCount.sort().reverse())
+    for(var rep in repsObj){
+      if (repsObj[rep] > 1) repsArr.push(repsObj[rep]);
+    }
+    repsArr2.push(repsArr.sort(function(a,b){return b-a}));
   });
-  for (var i=0, greatest=[], greatestIndex; i<counts.length; i++) {
-    if (counts[i] > greatest) { 
-      greatest = counts[i];
-      greatestIndex = i;
+  for (i=0;i<repsArr2.length;i++){
+    if (repsArr2[i]>maxArr){
+      maxArr = repsArr2[i];
+      maxIndex = i;
     }
   }
-  if (greatest == false) return -1;
-  return str[greatestIndex];
+  return maxIndex !== undefined ? words[maxIndex] : -1;
 }
